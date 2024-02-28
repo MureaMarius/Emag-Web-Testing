@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.specificPages.LoginPage;
+import pages.specificPages.AuthentificationPage;
 import singleton.WebDriverSingleton;
 import utilities.SpecialData;
 
@@ -13,13 +13,13 @@ import java.util.List;
 
 public class LoginPageTests {
     WebDriver driver;
-    LoginPage loginPage;
+    AuthentificationPage loginPage;
 
     @BeforeTest
     public void setUp(){
         driver = WebDriverSingleton.getInstance();
 
-        loginPage = new LoginPage(driver);
+        loginPage = new AuthentificationPage(driver);
     }
 
     @BeforeMethod
@@ -27,20 +27,24 @@ public class LoginPageTests {
         driver.get(PagesDefinition.AUTHENTIFICATION_PAGE);
     }
 
-    @Test(enabled = false)
+    @Test
     public void testLoginWithoutCredentials() throws InterruptedException {
         loginPage.login("", "", 0);
 
-        Assert.assertTrue(driver.findElement(By.xpath(LoginElementsDefinition.MISSING_FIELD_PATH)).getText().
-                equalsIgnoreCase(LoginElementsDefinition.MISSING_FIELD_MESSAGE));
+        Assert.assertTrue(driver.findElement(By.xpath(AuthElementsDefinition.MISSING_FIELD_PATH)).getText().
+                equalsIgnoreCase(AuthElementsDefinition.MISSING_FIELD_MESSAGE));
     }
 
-    @Test(enabled = false)
+    @Test
     public void testLoginWithCredentials() throws InterruptedException {
         loginPage.login(SpecialData.EMAIL, SpecialData.PASSWORD, 10000);
+        Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(PagesDefinition.MY_ACCOUNT_PAGE));
+
+        loginPage.logout();
+        Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(PagesDefinition.AUTHENTIFICATION_PAGE));
     }
 
-    @Test(enabled = false)
+    @Test
     public void testDifferentAccountTypeLogin() {
         loginPage.clickOnSpecificLoginButton("facebook account");
 
@@ -61,14 +65,14 @@ public class LoginPageTests {
     public void testHelpRedirectPage() throws InterruptedException {
         loginPage.clickOnSpecificLoginButton("help button");
 
-        List<String> browserTabs = new ArrayList<String>(driver.getWindowHandles());
+        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(browserTabs.get(1));
 
         Thread.sleep(2000);
         Assert.assertTrue(driver.switchTo().window(browserTabs.get(1)).getCurrentUrl().equalsIgnoreCase(PagesDefinition.HELP_REDIRECT_PAGE));
     }
 
-    @Test(enabled = false)
+    @Test
     public void testHomeRedirectPage() {
         loginPage.clickOnSpecificLoginButton("home button");
 

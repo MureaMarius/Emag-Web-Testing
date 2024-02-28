@@ -2,21 +2,21 @@ package pages.specificPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.LoginElementsDefinition;
+import pages.AuthElementsDefinition;
 
-public class LoginPage {
+public class AuthentificationPage {
     WebDriver driver;
+    private final By emailTextBox = By.id(AuthElementsDefinition.USER_LOGIN_EMAIL);
+    private final By passwordTextBox = By.id(AuthElementsDefinition.USER_LOGIN_PASSWORD);
+    private final By continuaButton = By.id(AuthElementsDefinition.CONTINUA_BUTTON);
+    private final By facebookAccountButton = By.name(AuthElementsDefinition.FACEBOOK_ACCOUNT_BUTTON);
+    private final By googleAccountButton = By.name(AuthElementsDefinition.GOOGLE_ACCOUNT_BUTTON);
+    private final By appleAccountButton = By.name(AuthElementsDefinition.APPLE_ACCOUNT_BUTTON);
+    private final By helpButton = By.xpath(AuthElementsDefinition.HELP_BUTTON);
+    private final By homePageButton = By.xpath(AuthElementsDefinition.HOME_PAGE_BUTTON);
+    private final By logoutButton = By.linkText(AuthElementsDefinition.LOGOUT_BUTTON);
 
-    private final By emailTextBox = By.id(LoginElementsDefinition.USER_LOGIN_EMAIL);
-    private final By passwordTextBox = By.id(LoginElementsDefinition.USER_LOGIN_PASSWORD);
-    private final By continuaButton = By.id(LoginElementsDefinition.CONTINUA_BUTTON);
-    private final By facebookAccountButton = By.name(LoginElementsDefinition.FACEBOOK_ACCOUNT_BUTTON);
-    private final By googleAccountButton = By.name(LoginElementsDefinition.GOOGLE_ACCOUNT_BUTTON);
-    private final By appleAccountButton = By.name(LoginElementsDefinition.APPLE_ACCOUNT_BUTTON);
-    private final By helpButton = By.xpath(LoginElementsDefinition.HELP_BUTTON);
-    private final By homePageButton = By.xpath(LoginElementsDefinition.HOME_PAGE_BUTTON);
-
-    public LoginPage(WebDriver driver){
+    public AuthentificationPage(WebDriver driver){
         this.driver = driver;
     }
 
@@ -29,7 +29,25 @@ public class LoginPage {
 
             this.setPassword(password);
             this.clickContinua();
+            Thread.sleep(miliseconds);
         }
+    }
+
+    public void logInLogOutProcess(String email, String password, int miliseconds) throws InterruptedException {
+        this.setEmail(email);
+        this.clickContinua();
+
+        Thread.sleep(miliseconds);
+
+        this.setPassword(password);
+        this.clickContinua();
+        Thread.sleep(miliseconds);
+
+        this.logout();
+    }
+
+    public void logout() {
+        driver.findElement(logoutButton).click();
     }
 
     public void setEmail(String email) {

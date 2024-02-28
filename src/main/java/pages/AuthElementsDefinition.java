@@ -1,6 +1,6 @@
 package pages;
 
-public class LoginElementsDefinition {
+public class AuthElementsDefinition {
 
     public static final String USER_LOGIN_EMAIL = "user_login_email";
     public static final String USER_LOGIN_PASSWORD = "user_login_password";
@@ -12,4 +12,5 @@ public class LoginElementsDefinition {
     public static final String APPLE_ACCOUNT_BUTTON = "social_init_apple";
     public static final String HELP_BUTTON = "/html/body/div[1]/div[3]/a";
     public static final String HOME_PAGE_BUTTON = "/html/body/div[1]/div[1]/a";
+    public static final String LOGOUT_BUTTON = "Log out";
 }
