@@ -28,7 +28,8 @@ public class LogoutTests {
 
     @Test
     public void logOutTest() throws InterruptedException {
-        loginPage.logInLogOutProcess(SpecialData.EMAIL, SpecialData.PASSWORD, 10000);
+        SpecialData specialData = new SpecialData();
+        loginPage.login(specialData.getEmail(), specialData.getPassword(), 10000);
 
         Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(PagesDefinition.AUTHENTIFICATION_PAGE));
     }

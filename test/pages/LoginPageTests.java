@@ -37,7 +37,8 @@ public class LoginPageTests {
 
     @Test
     public void testLoginWithCredentials() throws InterruptedException {
-        loginPage.login(SpecialData.EMAIL, SpecialData.PASSWORD, 10000);
+        SpecialData specialData = new SpecialData();
+        loginPage.login(specialData.getEmail(), specialData.getPassword(), 10000);
         Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(PagesDefinition.MY_ACCOUNT_PAGE));
 
         loginPage.logout();
