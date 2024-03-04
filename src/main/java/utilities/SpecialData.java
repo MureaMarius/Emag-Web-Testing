@@ -3,10 +3,10 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class SpecialData {
 
-    private String email;
-    private String name;
-    private String phoneNumber;
-    private String password;
+    private final String email;
+    private final String name;
+    private final String phoneNumber;
+    private final String password;
 
     public SpecialData(){
         Dotenv dotenv = Dotenv.configure().load();

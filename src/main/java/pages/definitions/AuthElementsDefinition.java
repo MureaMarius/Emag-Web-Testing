@@ -1,4 +1,4 @@
-package pages;
+package pages.definitions;
 
 public class AuthElementsDefinition {
 

@@ -2,7 +2,7 @@ package pages.specificPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.AuthElementsDefinition;
+import pages.definitions.AuthElementsDefinition;
 
 public class AuthentificationPage {
     WebDriver driver;

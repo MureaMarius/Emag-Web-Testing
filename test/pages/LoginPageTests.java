@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.definitions.AuthElementsDefinition;
+import pages.definitions.PagesDefinition;
 import pages.specificPages.AuthentificationPage;
 import singleton.WebDriverSingleton;
 import utilities.SpecialData;

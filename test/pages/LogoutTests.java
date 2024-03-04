@@ -6,6 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.definitions.PagesDefinition;
 import pages.specificPages.AuthentificationPage;
 import singleton.WebDriverSingleton;
 import utilities.SpecialData;

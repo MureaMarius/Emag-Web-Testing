@@ -1,4 +1,4 @@
-package pages;
+package pages.definitions;
 
 public class PagesDefinition {
     public static final String HOME_PAGE = "https://www.emag.ro/";
@@ -8,4 +8,7 @@ public class PagesDefinition {
     public static final String APPLE_ACCOUNT_REDIRECT_PAGE = "https://appleid.apple.com/";
     public static final String HELP_REDIRECT_PAGE = "https://www.emag.ro/help/cum-ma-loghez/";
     public static final String MY_ACCOUNT_PAGE = "https://www.emag.ro/user/myaccount";
+    public static final String SHOPPING_PAGE = "https://www.emag.ro/history/shopping";
+    public static final String VOUCHERS_PAGE = "https://www.emag.ro/user/vouchers";
+    public static final String WALLET_PAGE = "https://www.emag.ro/user/wallet";
 }
