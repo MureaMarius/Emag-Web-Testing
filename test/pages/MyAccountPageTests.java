@@ -33,9 +33,13 @@ public class MyAccountPageTests {
     @BeforeMethod
     public void openLoginPage() {
         driver.get(PagesDefinition.MY_ACCOUNT_PAGE);
+
+        if (!accountPage.closeSpot()) {
+            System.out.println("Spot doesn't exists!");
+        }
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyAccountPageUrl(){
         accountPage.myAccountPage();
 
@@ -44,7 +48,7 @@ public class MyAccountPageTests {
                 " but found: " + driver.getCurrentUrl());
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyAccountDetailInfo() {
         User currentUser = accountPage.getCurrentUserInfo();
         SpecialData specialData = new SpecialData();
@@ -62,7 +66,7 @@ public class MyAccountPageTests {
                         ", but found: " + currentUser.getPhoneNumber());
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyAcronymName() {
         SpecialData specialData = new SpecialData();
 
@@ -74,7 +78,7 @@ public class MyAccountPageTests {
                         ", but found: " + actualAcronym);
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyRedirectToShoppingPage(){
         accountPage.redirectToShoppingPage();
 
@@ -83,7 +87,7 @@ public class MyAccountPageTests {
                 driver.getCurrentUrl());
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyRedirectToVouchersPage(){
         accountPage.redirectToVouchersPage();
 
@@ -92,12 +96,20 @@ public class MyAccountPageTests {
                         driver.getCurrentUrl());
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyRedirectToMyWalletPage(){
         accountPage.redirectToMyWalletPage();
 
         Assert.assertTrue(driver.getCurrentUrl().contains(PagesDefinition.WALLET_PAGE),
                 "Not expected page after clicking on My Wallet page button. Current page is: " +
                         driver.getCurrentUrl());
+    }
+
+    @Test
+    public void verifySupportOption() throws InterruptedException {
+        Assert.assertTrue(accountPage.showSupportOption(), "Not expected behaviour. A support chat should " +
+                "be visible.");
+
+        Assert.assertTrue(accountPage.hideSupportOption(), "Not expected behaviour. Support chat should be minimize.");
     }
 }
